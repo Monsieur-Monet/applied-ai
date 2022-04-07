@@ -1,0 +1,70 @@
+/* Reset all browser styles */
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 1em;
+}
+
+body {
+    font-size: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+a img, :link img, :visited img {
+    border: 0;
+}
+
+/* Styling starts here */
+
+body {
+    background: #6667AB;
+}
+
+.container {
+
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    cursor: default;
+
+}
+
+.headline {
+
+    margin: 2rem 0;
+
+    font-size: 5rem;
+    color: white;
+
+}
+
+.sub-headline {
+
+    margin: 0;
+
+    color: white;
+}
+
+.sub-headline:after {
+
+    display: block;
+
+    content: '';
+    border-bottom: solid 3px white;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.sub-headline:hover:after {
+
+    transform: scaleX(1);
+}
+
