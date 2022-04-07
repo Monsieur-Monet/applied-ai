@@ -28,13 +28,45 @@ body {
 
     width: 100vw;
     height: 100vh;
+
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 
     cursor: default;
 
+}
+
+.inner-container {
+    max-width: 60rem;
+
+    display: flex;
+
+}
+
+.svg-container, .input-container {
+
+    width: 30rem;
+    height: auto;
+
+    margin: 2rem;
+    padding: 1rem;
+
+    border-radius: 1rem;
+    background: white;
+
+}
+
+.word-container {
+    width: 60rem;
+    min-height: 10rem;
+    height: auto;
+
+    margin: 2rem;
+    padding: 1rem;
+
+    border-radius: 1rem;
+    background: white;
 }
 
 .headline {
@@ -46,25 +78,4 @@ body {
 
 }
 
-.sub-headline {
-
-    margin: 0;
-
-    color: white;
-}
-
-.sub-headline:after {
-
-    display: block;
-
-    content: '';
-    border-bottom: solid 3px white;
-    transform: scaleX(0);
-    transition: transform 250ms ease-in-out;
-}
-
-.sub-headline:hover:after {
-
-    transform: scaleX(1);
-}
 
