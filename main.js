@@ -1,3 +1,5 @@
+let solution = get3randomNumbers();
+
 function get3randomNumbers() {
     let randomNumbers = [];
     for (let i = 0; i < 3; i++) {
