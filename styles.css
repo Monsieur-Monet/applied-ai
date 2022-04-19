@@ -21,7 +21,7 @@ a img, :link img, :visited img {
 /* Styling starts here */
 
 body {
-    background: #c07709;
+    background: black;
 }
 
 .container {
@@ -38,7 +38,6 @@ body {
 }
 
 .inner-container {
-    max-width: 60rem;
 
     display: flex;
 
@@ -46,14 +45,12 @@ body {
 
 .svg-container, .input-container {
 
-    width: 30rem;
     height: auto;
 
     margin: 2rem;
     padding: 1rem;
 
-    border-radius: 1rem;
-    background: white;
+    border: 2px solid #149414;
 
 }
 
@@ -65,8 +62,8 @@ body {
     margin: 2rem;
     padding: 1rem;
 
-    border-radius: 1rem;
-    background: white;
+    border: 2px solid #149414;
+    color: #149414;
 }
 
 .headline {
@@ -74,7 +71,7 @@ body {
     margin: 2rem 0;
 
     font-size: 5rem;
-    color: white;
+    color: #149414;
 
 }
 
