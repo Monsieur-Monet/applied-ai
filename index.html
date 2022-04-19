@@ -11,7 +11,6 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
   <link rel="manifest" href="/favicon/site.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-  <script src="main.js"></script>
 </head>
 <body>
 <div class="container">
@@ -28,14 +27,17 @@
       </svg>
     </div>
     <div class="input-container">
-      Draw here
+      <label>
+        <input id="input" type="text"/>
+        <button id="submit" type="button" onclick="matchInput()">Submit</button>
+      </label>
     </div>
   </div>
   <div class="inner-container">
-    <div class="word-container">
-      Here goes the word
+    <div class="word-container" id="output">
     </div>
   </div>
 </div>
+<script src="main.js"></script>
 </body>
 </html>

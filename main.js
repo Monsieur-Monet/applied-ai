@@ -6,4 +6,26 @@ function get3randomNumbers() {
     }
     return randomNumbers;
 }
-console.log(get3randomNumbers());
+
+document.getElementById('output').innerHTML = get3randomNumbers();
+
+
+function getInput() {
+    let input = document.getElementById("input").value;
+    console.log(input);
+    return input;
+}
+
+function matchInput() {
+    let input = getInput();
+    let matchingPositions = [];
+    solution.forEach((element, index) => {
+        if (input === element) {
+            matchingPositions.push(index);
+        }
+        console.log(matchingPositions);
+    });
+    return matchingPositions;
+}
+
+console.log(matchInput());
