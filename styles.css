@@ -21,7 +21,7 @@ a img, :link img, :visited img {
 /* Styling starts here */
 
 body {
-    background: black;
+    background: white;
 }
 
 .container {
@@ -75,4 +75,20 @@ body {
 
 }
 
+.canvas-container {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin: 0 10px 10px;
+}
 
+.prediction p {
+    font-weight: bold;
+    font-size: 87px;
+    text-align: center;
+    margin: 0;
+}
+
+.controls {
+    clear: both;
+}

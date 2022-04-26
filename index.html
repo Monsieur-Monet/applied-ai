@@ -11,38 +11,21 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
   <link rel="manifest" href="/favicon/site.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
-  <script src="sketch.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0"></script>
 
 </head>
 <body>
 <div class="container">
   <h1 class="headline">Crack The Code</h1>
-  <div class="inner-container">
-    <div class="input-container" id="input_container_0">
-      <div class="sketch-container">
-        <canvas id="sketch_0"></canvas>
-      </div>
-    </div>
-    <div class="input-container" id="input_container_1">
-      <div class="sketch-container">
-        <canvas id="sketch_1"></canvas>
-      </div>
-    </div>
-    <div class="input-container" id="input_container_2">
-      <div class="sketch-container">
-        <canvas id="sketch_2"></canvas>
-      </div>
-    </div>
+  <p>Draw a number in this box</p>
+  <div class="canvas-container" id="canvas-container">
   </div>
-  <div class="inner-container">
-    <div class="word-container" id="output">
-    </div>
+  <div class="canvas-container prediction" id="prediction">
   </div>
-  <div class="inner-container">
-    <div class="button-container">
-      <button id="submit" class="button" onclick="getInput()">Submit</button>
-    </div>
+
+  <div class="controls" id="controls">
+    <button id="clear">Clear</button>
+    <button id="predict">Tell me the number</button>
   </div>
 </div>
 <script src="main.js"></script>
