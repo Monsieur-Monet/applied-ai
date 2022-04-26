@@ -41,7 +41,7 @@ function getInput() {
     let model;
 
     async function loadModel() {
-        model = await tf.loadModel('model.json');
+        model = await tf.loadLayersModel('model.json');
         console.log('Model loaded');
     }
 
