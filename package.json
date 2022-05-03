@@ -1,0 +1,19 @@
+{
+  "name": "applied-ai.github.io",
+  "version": "1.0.0",
+  "description": "The Website can be reached by clicking [here](https://monsieur-monet.github.io/applied-ai).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Monsieur-Monet/applied-ai.github.io.git"
+  },
+  "author": "Christian Schwind, Kaan Sevinc, Timo Scheer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Monsieur-Monet/applied-ai.github.io/issues"
+  },
+  "homepage": "https://github.com/Monsieur-Monet/applied-ai.github.io#readme"
+}
