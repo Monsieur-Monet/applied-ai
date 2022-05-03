@@ -6,5 +6,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="@tensorflow/tfjs-vis" level="application" />
     <orderEntry type="library" name="@tensorflow" level="application" />
+    <orderEntry type="library" name="@tensorflow" level="application" />
   </component>
 </module>
