@@ -10,14 +10,18 @@ let nTrain = 100;
 
 
 function setup() {
-    createCanvas(280,280);
+    createCanvas(280, 280);
     background(200);
     noStroke()
     erasePicture();
+    if (localStorage.getItem('tensorflowjs_models/my-model/model_metadata') !== null) {
+        loadTrainingData().then(r => model.compile({optimizer: tf.train.sgd(5.1), loss: 'meanSquaredError'}));
+        console.log(`Loading model from local storage`);
+    } else {
+        createModel();
+        console.log(`Training new model`);
+    }
 
-    loadTrainingData().then(r => model.compile({optimizer: tf.train.sgd(5.1), loss: 'meanSquaredError'}));
-
-    //createModel();
 }
 
 function createModel() {
@@ -33,24 +37,24 @@ function createModel() {
 
 function draw() {
     if (painting && mouseX >= 0 && mouseX < 280 && mouseY >= 0 && mouseY < 280) {
-        indexOfMouse = Math.trunc(mouseY/10) * 28 + Math.trunc(mouseX/10);
+        indexOfMouse = Math.trunc(mouseY / 10) * 28 + Math.trunc(mouseX / 10);
         picture[indexOfMouse] = 0;
     }
 
-    for (let i = 0; i < 28; ++i){
+    for (let i = 0; i < 28; ++i) {
         for (let j = 0; j < 28; ++j) {
-            fill (picture[i*28 + j])
-            rect(j*10, i*10, 10,10);
+            fill(picture[i * 28 + j])
+            rect(j * 10, i * 10, 10, 10);
         }
     }
 }
 
-function erasePicture () {
+function erasePicture() {
     for (let i = 0; i < 784; ++i)
         picture[i] = 240;
 }
 
-function trainWithPicture (number) {
+function trainWithPicture(number) {
     buildTrainImage();
     buildLabel(number);
     const x = tf.tensor4d(
@@ -69,23 +73,23 @@ function buildTrainImage() {
     trainImage = new Float32Array(copy);
 }
 
-function buildLabel (number) {
-    label = [0,0,0,0,0,0,0,0,0,0];
+function buildLabel(number) {
+    label = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     label[number] = 1;
 }
 
-function mousePressed () {
+function mousePressed() {
     painting = true;
 }
 
-function mouseReleased () {
+function mouseReleased() {
     painting = false;
 }
 
 function training() {
     [x, y] = mnist_data.getTrainData();
     x = x.reshape([nTrain, 784]);
-    model.fit(x,y, {batchSize: 1, epochs: 5}).then(testing);
+    model.fit(x, y, {batchSize: 1, epochs: 5}).then(testing);
 
 }
 
@@ -93,7 +97,7 @@ function testing() {
     console.log("Training finished.")
     let num_test_samples = 10;
     [xtest, ytest] = mnist_data.getTestData(num_test_samples);
-    xtest = xtest.reshape([num_test_samples,784]);
+    xtest = xtest.reshape([num_test_samples, 784]);
     ypredict = model.predict(xtest);
     console.log("Testing finished.")
 }
@@ -101,12 +105,12 @@ function testing() {
 function newTraining() {
     [x, y] = trainWithPicture(9);
     x = x.reshape([1, 784]);
-    model.fit(x,y, {batchSize: 1, epochs: 5});
+    model.fit(x, y, {batchSize: 1, epochs: 5});
 }
 
 function newTesting() {
     [xtest, ytest] = trainWithPicture(0)
-    xtest = xtest.reshape([1,784]);
+    xtest = xtest.reshape([1, 784]);
     ypredict = model.predict(xtest);
 
     ypredict.print(true);
@@ -116,11 +120,13 @@ function newTesting() {
 }
 
 async function saveTrainingData() {
-    const saveResults = await model.save('indexeddb://my-model');
+    const saveResults = await model.save('localstorage://my-model');
     console.log("Model saved.")
 }
 
 async function loadTrainingData() {
-    model = await tf.loadLayersModel('indexeddb://my-model');
+    model = await tf.loadLayersModel('localstorage://my-model');
+    console.log("Model loaded.")
 }
+
 
