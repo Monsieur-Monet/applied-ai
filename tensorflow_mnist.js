@@ -20,6 +20,8 @@ function setup() {
     } else {
         createModel();
         console.log(`Training new model`);
+        saveTrainingData().then(r => console.log(`Saved model to local storage`));
+
     }
 
 }
