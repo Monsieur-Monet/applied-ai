@@ -23,6 +23,9 @@ const drawing = (sketch) => {
                 sketch.rect(j * 10, i * 10, 10, 10);
             }
         }
+        if (isPainting) {
+            tensorflow_mnistSketch.predictNumberFromCurrentDrawing(drawingArray);
+        }
     }
 
     sketch.mousePressed = function () {

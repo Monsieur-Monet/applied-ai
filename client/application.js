@@ -13,6 +13,10 @@ Application = {
 
     saveCurrentTrainingData: function () {
         tensorflow_mnistSketch.saveCurrentTrainingData();
+    },
+
+    drawWeightOfNumber: function (number) {
+        weightSketch.drawWeightOfNumber(number);
     }
 
     /*
