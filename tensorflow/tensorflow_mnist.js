@@ -78,9 +78,18 @@ const tensorflowModel = (sketch) => {
     }
 
     sketch.trainModelWithDrawing = function (drawing, number) {
+        console.log(number)
+        let x;
+        let y;
         [x, y] = sketch._extractTensorsFromDrawing(drawing, number);
         x = x.reshape([1, 784]);
         model.fit(x, y, {batchSize: 1, epochs: 5});
+        sketch.resetSelect();
+    }
+
+    sketch.resetSelect = function (){
+        document.getElementById("select").selectedIndex = 0;
+        console.log('reset index');
     }
 
     sketch.predictNumberFromCurrentDrawing = function (drawing) {

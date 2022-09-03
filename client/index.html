@@ -17,6 +17,7 @@
   <script src="../tensorflow/tensorflow_mnist.js"></script>
   <script src="../sketches/drawing.js"></script>
   <script src="application.js"></script>
+  <script src="event.js"></script>
 </head>
 
 <body>
@@ -32,15 +33,29 @@
       </div>
     </div>
     <div class="button-container">
-      <button class="button" onclick="Application.trainModelWithDrawing(9)">Train</button>
       <button class="button" onclick="Application.predictNumberFromCurrentDrawing()">Predict</button>
       <button class="button" onclick="Application.eraseDrawing()">Erase</button>
       <button class="button" onclick="Application.saveCurrentTrainingData()">Save Training Data</button>
+      <button class="button" onclick="Application.trainModelWithDrawing(onChange())">Train</button>
+      <select onchange="onChange()" id="select" class="select" name="select">
+        <option selected disabled value="">Wrong Prediction, choose correct number</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
     </div>
+    <div class="box-container">
     <div class="canvas-container" id="drawing_sketch"></div>
+    <div class="predicted-container" id="weights_sketch"> <span class="predicted-number" id="predicted-number"></span></div>
+    </div>
   </div>
-  <h1 class="headline">Predicted Number:
-    <span id="predicted-number">x</span>
   </h1>
 </body>
 

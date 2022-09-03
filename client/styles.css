@@ -49,6 +49,15 @@ body {
     transition: background-color ease-in-out .2s;
 }
 
+.select{
+    padding: 2rem;
+    background-color: #272a2f;
+    color: #fff;
+    border: none;
+    border-radius:.5rem;
+    transition: background-color ease-in-out .2s;
+}
+
 .button:hover{
     cursor: pointer;
     background-color: #a0aef3;
@@ -71,4 +80,23 @@ body {
 
 .text{
     max-width: 30vw;
+}
+
+.predicted-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 280px;
+    background-color: #f0f0f0;
+    border-radius: .5rem;
+}
+
+.predicted-number{
+    font-size: 15rem;
+}
+
+.box-container{
+    display: flex;
+    gap: 3rem;
 }

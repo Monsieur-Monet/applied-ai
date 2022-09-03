@@ -13,7 +13,7 @@ Application = {
 
     saveCurrentTrainingData: function () {
         tensorflow_mnistSketch.saveCurrentTrainingData();
-    }
+    },
 
     /*
     clearGrid: function () {
@@ -70,6 +70,8 @@ Application = {
     }
     */
 }
+
+
 /*
 window.onload = function () {
     document.getElementById("correct_input").value = "";
