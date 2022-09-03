@@ -15,6 +15,10 @@ Application = {
         tensorflow_mnistSketch.saveCurrentTrainingData();
     },
 
+    drawWeightOfNumber: function (number) {
+        weightSketch.drawWeightOfNumber(number);
+    }
+
     /*
     clearGrid: function () {
         inputSketch.clearGrid();

@@ -12,11 +12,9 @@ const tensorflowModel = (sketch) => {
                 optimizer: tf.train.sgd(5.1),
                 loss: 'meanSquaredError'
             }));
-            console.log(`Loading model from local storage`);
         } else {
-            sketch._createModel();
             console.log(`Training new model`);
-            sketch.saveCurrentTrainingData().then(r => console.log(`Saved model to local storage`));
+            sketch._createModel();
         }
     }
 
@@ -36,7 +34,8 @@ const tensorflowModel = (sketch) => {
         x = x.reshape([nTrain, 784]);
         model.fit(x, y, {batchSize: 1, epochs: 5}).then(() => {
             console.log("Training finished.")
-            sketch._testing();                          //TODO: how to print accuracy?
+            sketch.saveCurrentTrainingData();
+            sketch._testing();
         });
     }
 
@@ -45,12 +44,7 @@ const tensorflowModel = (sketch) => {
         [xtest, ytest] = mnist_data.getTestData(num_test_samples);
         xtest = xtest.reshape([num_test_samples, 784]);
         ypredict = model.predict(xtest);
-        console.log("Testing finished.")
-    }
-
-
-    sketch.draw = function () {
-
+        console.log("Testing finished.");                          //TODO: how to print accuracy?
     }
 
     sketch._setTrainingImage = function (drawing) {
@@ -78,9 +72,7 @@ const tensorflowModel = (sketch) => {
     }
 
     sketch.trainModelWithDrawing = function (drawing, number) {
-        console.log(number)
-        let x;
-        let y;
+        let x, y;
         [x, y] = sketch._extractTensorsFromDrawing(drawing, number);
         x = x.reshape([1, 784]);
         model.fit(x, y, {batchSize: 1, epochs: 5});
@@ -100,11 +92,12 @@ const tensorflowModel = (sketch) => {
         ypredict.print(true);
         let predictedNumber = ypredict.argMax(1).dataSync()[0];
         document.getElementById("predicted-number").innerHTML = predictedNumber.toString();
+        weightSketch.drawWeightOfNumber(predictedNumber);
     }
 
     sketch._loadPreviousTrainingData = async function () {
         model = await tf.loadLayersModel('localstorage://my-model');
-        console.log("Model loaded from locally found data.")
+        console.log("Model loaded from local data.")
     }
 
     sketch.saveCurrentTrainingData = async function () {
