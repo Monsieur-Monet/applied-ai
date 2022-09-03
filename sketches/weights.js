@@ -4,7 +4,7 @@ const weights = (sketch) => {
     let weightArray = [];
 
     sketch.setup = function () {
-        sketch.createCanvas(280*4, 280);
+        sketch.createCanvas(280, 280);
         sketch.background(200);
         sketch.noStroke();
     }
