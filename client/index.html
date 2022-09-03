@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="../tensorflow/mnist_data.js"></script>
+  <script src="../tensorflow/tensorflow_mnist.js"></script>
+
+  <script src="../sketches/drawing.js"></script>
+  <script src="../sketches/weights.js"></script>
+
+  <script src="application.js"></script>
+  <script src="event.js"></script>
+</head>
+
+<body>
+  <div class="page">
+    <div class="intro">
+      <div class="headline">AAI Team 6</div>
+      <div class="text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum.
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="button" onclick="Application.eraseDrawing()">Erase</button>
+      <button class="button" onclick="Application.saveCurrentTrainingData()">Save Training Data</button>
+      <button class="button" onclick="Application.trainModelWithDrawing(onChange())">Train</button>
+      <select onchange="onChange()" id="select" class="select" name="select">
+        <option selected disabled value="">Wrong Prediction, choose correct number</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
+    </div>
+    <div class="box-container">
+    <div class="canvas-container" id="drawing_sketch"></div>
+    <div class="predicted-container"> <span class="predicted-number" id="predicted-number"></span></div>
+    <div class="canvas-container"  id="weights_sketch"></div>
+    </div>
+  </div>
+  </h1>
+</body>
+
+</html>

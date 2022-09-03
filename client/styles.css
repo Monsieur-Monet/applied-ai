@@ -1,0 +1,102 @@
+/* Reset all browser styles */
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 1em;
+}
+
+body {
+    font-size: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+a img, :link img, :visited img {
+    border: 0;
+}
+
+/* Styling starts here */
+
+body {
+    background: #121619;
+}
+
+.page{
+    max-width: 100vw;
+    max-height: 100vh;
+    padding: 3rem;
+    display: flex;    
+    align-items: center;
+    flex-direction: column;
+}
+
+.button-container{
+    margin-bottom: 3rem;
+
+    display: flex;
+    gap: 1rem;
+}
+
+.button{
+    padding: 2rem;
+    background-color: #272a2f;
+    color: #fff;
+    border: none;
+    border-radius:.5rem;
+    transition: background-color ease-in-out .2s;
+}
+
+.select{
+    padding: 2rem;
+    background-color: #272a2f;
+    color: #fff;
+    border: none;
+    border-radius:.5rem;
+    transition: background-color ease-in-out .2s;
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: #a0aef3;
+}
+
+.canvas-container canvas{
+    border-radius: .5rem;
+}
+
+.intro{
+    margin-bottom: 3rem;
+    color: white;
+    text-align: center;
+}
+
+.headline{
+    font-size: 3rem;
+    font-weight: lighter;
+}
+
+.text{
+    max-width: 30vw;
+}
+
+.predicted-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 280px;
+    background-color: #f0f0f0;
+    border-radius: .5rem;
+}
+
+.predicted-number{
+    font-size: 15rem;
+}
+
+.box-container{
+    display: flex;
+    gap: 3rem;
+}

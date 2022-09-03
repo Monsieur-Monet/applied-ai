@@ -4,7 +4,9 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="@tensorflow/tfjs-vis" level="application" />
     <orderEntry type="library" name="@tensorflow" level="application" />
+    <orderEntry type="library" name="@tensorflow" level="application" />
+    <orderEntry type="library" name="p5.js" level="application" />
+    <orderEntry type="library" name="@tensorflow/tfjs" level="application" />
   </component>
 </module>
