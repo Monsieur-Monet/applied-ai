@@ -8,16 +8,19 @@
       margin: 0;
   } </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
-  <script src="mnist_data.js"></script>
-  <script src="tensorflow_mnist.js"></script>
+
+  <script src="tensorflow/mnist_data.js"></script>
+  <script src="tensorflow/tensorflow_mnist.js"></script>
+  <script src="sketches/drawing.js"></script>
+
+  <script src="client/application.js"></script>
 </head>
 <body>
-<button onclick="trainModel()">Train</button>
-<button onclick="predictFromCurrentDrawing()">Predict</button>
-<button onclick="eraseDrawing()">Erase</button>
-<button onclick="saveCurrentTrainingData()">Save Training Data</button>
+<button onclick="Application.trainModelWithDrawing(9)">Train</button>
+<button onclick="Application.predictNumberFromCurrentDrawing()">Predict</button>
+<button onclick="Application.eraseDrawing()">Erase</button>
+<button onclick="Application.saveCurrentTrainingData()">Save Training Data</button>
 <h1 class="headline">Predicted Number:
   <span id="predicted-number">x</span>
 </h1>
