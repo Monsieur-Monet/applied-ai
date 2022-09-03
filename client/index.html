@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-  <style> body {
+  <style>
+    body {
       padding: 0;
       margin: 0;
-  } </style>
+    }
+  </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
-
+  <link rel="stylesheet" href="styles.css">
   <script src="../tensorflow/mnist_data.js"></script>
   <script src="../tensorflow/tensorflow_mnist.js"></script>
   <script src="../sketches/drawing.js"></script>
-
   <script src="application.js"></script>
 </head>
+
 <body>
-<button onclick="Application.trainModelWithDrawing(9)">Train</button>
-<button onclick="Application.predictNumberFromCurrentDrawing()">Predict</button>
-<button onclick="Application.eraseDrawing()">Erase</button>
-<button onclick="Application.saveCurrentTrainingData()">Save Training Data</button>
-<h1 class="headline">Predicted Number:
-  <span id="predicted-number">x</span>
-</h1>
+  <div class="page">
+    <div class="intro">
+      <div class="headline">AAI Team 6</div>
+      <div class="text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum.
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="button" onclick="Application.trainModelWithDrawing(9)">Train</button>
+      <button class="button" onclick="Application.predictNumberFromCurrentDrawing()">Predict</button>
+      <button class="button" onclick="Application.eraseDrawing()">Erase</button>
+      <button class="button" onclick="Application.saveCurrentTrainingData()">Save Training Data</button>
+    </div>
+    <div class="canvas-container" id="drawing_sketch"></div>
+  </div>
+  <h1 class="headline">Predicted Number:
+    <span id="predicted-number">x</span>
+  </h1>
 </body>
+
 </html>
