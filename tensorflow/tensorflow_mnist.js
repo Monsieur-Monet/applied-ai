@@ -3,7 +3,7 @@ let trainingImage, trainingLabel;
 let model;
 let single_layer;
 let mnist_data;
-let nTrain = 10000;
+let nTrain = 1000;
 
 const tensorflowModel = (sketch) => {
     sketch.setup = function () {
