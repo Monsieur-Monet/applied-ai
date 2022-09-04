@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Applied AI</title>
   <meta charset="utf-8">
@@ -27,13 +28,14 @@
 <body>
   <div class="page">
     <div class="intro">
-      <div class="headline">AAI Team 6</div>
+      <div class="headline">AAI Team 6 - Christian Schwind,<br> Kaan Sevinç and Timo Scheer</div>
       <div class="text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.
+        This application is using Tensorflow and MNIST-data to create a neural network which is able to predict
+        handwritten numbers. By default, it is built with 5000 training samples and uses 1000 different samples to
+        determine its current accuracy. If the prediction is wrong, you can train the model with new Data and improve
+        it! The data is saved in your localstorage.<br><br>
+        Feel free to try out yourself!<br><br>
+        Source code can be found <a class="link" href="https://github.com/Monsieur-Monet/applied-ai">here</a>.
       </div>
     </div>
     <div class="button-container">
@@ -60,12 +62,12 @@
         <div class="container-desc">Draw here</div>
       </div>
       <div class="flex">
-      <div class="predicted-container"> <span class="predicted-number" id="predicted-number"></span></div>
-      <div class="container-desc">Prediction</div>
+        <div class="predicted-container"> <span class="predicted-number" id="predicted-number"></span></div>
+        <div class="container-desc">Prediction</div>
       </div>
       <div class="flex">
-      <div class="canvas-container" id="predictionWeight_sketch"></div>
-      <div class="container-desc">Prediction weights</div>
+        <div class="canvas-container" id="predictionWeight_sketch"></div>
+        <div class="container-desc">Prediction weights</div>
       </div>
     </div>
     <div class="box-container">
@@ -74,4 +76,5 @@
     <div class="loading" id="loading"></div>
   </div>
 </body>
+
 </html>
