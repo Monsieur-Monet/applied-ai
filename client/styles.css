@@ -80,6 +80,7 @@ body {
 
 .text{
     max-width: 30vw;
+    
 }
 
 .predicted-container{
@@ -99,4 +100,11 @@ body {
 .box-container{
     display: flex;
     gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.loading{
+    color: #fff;
+    font-size: 2rem;
+    font-weight: lighter;
 }

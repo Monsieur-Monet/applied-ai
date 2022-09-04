@@ -3,7 +3,7 @@ let trainingImage, trainingLabel;
 let model;
 let single_layer;
 let mnist_data;
-let nTrain = 1000;
+let nTrain = 5000;
 
 const tensorflowModel = (sketch) => {
     sketch.setup = function () {
@@ -14,6 +14,7 @@ const tensorflowModel = (sketch) => {
             }));
         } else {
             console.log(`Training new model`);
+            document.getElementById("loading").innerHTML = "Training new model - Please wait till its finished";
             sketch._createModel();
         }
     }
@@ -98,6 +99,7 @@ const tensorflowModel = (sketch) => {
     sketch.saveCurrentTrainingData = async function () {
         const saveResults = await model.save('localstorage://my-model');
         console.log("Current model saved locally.")
+        document.getElementById("loading").innerHTML = "Training done!";
     }
 }
 

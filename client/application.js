@@ -5,17 +5,20 @@ Application = {
 
     trainModelWithDrawing: function (number) {
         tensorflow_mnistSketch.trainModelWithDrawing(drawingArray, number);
+        tensorflow_mnistSketch.saveCurrentTrainingData();
     },
 
     predictNumberFromCurrentDrawing: function () {
         tensorflow_mnistSketch.predictNumberFromCurrentDrawing(drawingArray);
     },
 
-    saveCurrentTrainingData: function () {
-        tensorflow_mnistSketch.saveCurrentTrainingData();
-    },
-
     drawWeightOfNumber: function (number) {
         predictionWeightSketch.drawWeightOfNumber(number);
+    },
+
+    clearLocalstorage: function () {
+        localStorage.clear();
+        console.log("local storage cleared");
+        location.reload();
     }
 }
