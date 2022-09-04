@@ -20,7 +20,7 @@ Die Gewichte der einzelnen Ziffern werden alle gleichzeitig visualisiert am unte
 Das trainierte Modell wird im localstorage des verwendeten Browsers gespeichert, sodass das Training des Modells mit den ersten 5000 Bildern nicht jedes Mal neu stattfinden muss. Beim Training durch den User wird das Modell ebenfalls jedes Mal wieder abgespeichert. Der Nutzer hat gleichzeitig auch die Möglichkeit, das gesamte Modell aus dem lokalen Speicher zu löschen und es direkt wieder mit 5000 Beispielbildern trainieren zu lassen. Hierbei kann er wieder live dabei zusehen, wie sich die Gewichte nach und nach entwickeln.
 
 
-##Projektspezifikationen
+## Projektspezifikationen
 
 ### Was soll die Anwendung können?
 * Automatisches Training eines Modells auf Basis des MNIST-Datensatzes (Ziffern 0-9)
