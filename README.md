@@ -2,7 +2,7 @@
 
 Die Webapp kann über folgenden link aufgerufen werden: https://monsieur-monet.github.io/applied-ai/
 
-##Projektdokumentation
+## Projektdokumentation
 
 Basis der Webapplikation ist ein neuronales Netzwerk (basierend auf dem Perzeptron-Modell), das in der Lage ist, handgeschriebene Nummern zu erkennen.
 
