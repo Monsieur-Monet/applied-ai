@@ -1,4 +1,7 @@
 function onChange() {
-   var value =  parseInt(document.getElementById('select').value);
-   return value
+   if (document.getElementById('select').value !== "") {
+      number =  parseInt(document.getElementById('select').value);
+      document.getElementById("predicted-number").innerHTML = number.toString();
+   }
+   return number;
 }

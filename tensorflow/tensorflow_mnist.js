@@ -36,6 +36,7 @@ const tensorflowModel = (sketch) => {
             console.log("Training finished.")
             sketch.saveCurrentTrainingData();
             sketch._testing();
+            //weightsSketch.calculateAllWeights();
         });
     }
 
@@ -76,12 +77,6 @@ const tensorflowModel = (sketch) => {
         [x, y] = sketch._extractTensorsFromDrawing(drawing, number);
         x = x.reshape([1, 784]);
         model.fit(x, y, {batchSize: 1, epochs: 5});
-        sketch.resetSelect();
-    }
-
-    sketch.resetSelect = function (){
-        document.getElementById("select").selectedIndex = 0;
-        console.log('reset index');
     }
 
     sketch.predictNumberFromCurrentDrawing = function (drawing) {
@@ -92,7 +87,7 @@ const tensorflowModel = (sketch) => {
         ypredict.print(true);
         let predictedNumber = ypredict.argMax(1).dataSync()[0];
         document.getElementById("predicted-number").innerHTML = predictedNumber.toString();
-        weightSketch.drawWeightOfNumber(predictedNumber);
+        number = predictedNumber;
     }
 
     sketch._loadPreviousTrainingData = async function () {

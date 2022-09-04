@@ -17,6 +17,7 @@
   <script src="../tensorflow/tensorflow_mnist.js"></script>
 
   <script src="../sketches/drawing.js"></script>
+  <script src="../sketches/predictionWeight.js"></script>
   <script src="../sketches/weights.js"></script>
 
   <script src="application.js"></script>
@@ -38,9 +39,9 @@
     <div class="button-container">
       <button class="button" onclick="Application.eraseDrawing()">Erase</button>
       <button class="button" onclick="Application.saveCurrentTrainingData()">Save Training Data</button>
-      <button class="button" onclick="Application.trainModelWithDrawing(onChange())">Train</button>
+      <button class="button" onclick="Application.trainModelWithDrawing(onChange())">Train Model</button>
       <select onchange="onChange()" id="select" class="select" name="select">
-        <option selected disabled value="">Wrong Prediction, choose correct number</option>
+        <option selected disabled value="">Wrong prediction? Choose correct number</option>
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -56,7 +57,7 @@
     <div class="box-container">
     <div class="canvas-container" id="drawing_sketch"></div>
     <div class="predicted-container"> <span class="predicted-number" id="predicted-number"></span></div>
-    <div class="canvas-container"  id="weights_sketch"></div>
+    <div class="canvas-container"  id="predictionWeight_sketch"></div>
     </div>
   </div>
   </h1>
