@@ -3,7 +3,8 @@ let trainingImage, trainingLabel;
 let model;
 let single_layer;
 let mnist_data;
-let nTrain = 5000;
+let nTrain = 1000;
+let num_test_samples = 1000;
 
 const tensorflowModel = (sketch) => {
     sketch.setup = function () {
@@ -27,7 +28,7 @@ const tensorflowModel = (sketch) => {
         model.compile({optimizer: tf.train.sgd(5.1), loss: 'meanSquaredError'});
 
         mnist_data = new MnistData();
-        mnist_data.load(nTrain, 10).then(sketch._training);
+        mnist_data.load(nTrain, num_test_samples).then(sketch._training);
     }
 
     sketch._training = function () {
@@ -37,16 +38,22 @@ const tensorflowModel = (sketch) => {
             console.log("Training finished.")
             sketch.saveCurrentTrainingData();
             sketch._testing();
-            //weightsSketch.calculateAllWeights();
         });
     }
 
     sketch._testing = function () {
-        let num_test_samples = 10;
+        let xtest, ytest;
         [xtest, ytest] = mnist_data.getTestData(num_test_samples);
         xtest = xtest.reshape([num_test_samples, 784]);
-        ypredict = model.predict(xtest);
-        console.log("Testing finished.");                          //TODO: how to print accuracy?
+        let yPredict = model.predict(xtest);
+        console.log("Testing finished. Accuracy was: ");
+
+        //find arg max in predicted labels and in groundtruth labels and substratc those
+        r = yPredict.transpose().argMax().sub(ytest.transpose().argMax());
+        r = r.abs();
+        //find all zero values <= prediction was correct and divide by total number of samples
+
+        document.getElementById("loading").innerHTML = (r.equal(0).sum().div(num_test_samples)).toString();
     }
 
     sketch._setTrainingImage = function (drawing) {
@@ -99,24 +106,8 @@ const tensorflowModel = (sketch) => {
     sketch.saveCurrentTrainingData = async function () {
         const saveResults = await model.save('localstorage://my-model');
         console.log("Current model saved locally.")
-        document.getElementById("loading").innerHTML = "Training done!";
+        //document.getElementById("loading").innerHTML = "Training done!";
     }
 }
 
 let tensorflow_mnistSketch = new p5(tensorflowModel, 'model');
-
-
-/*
-//TODO:
-    - Weights visualisieren
-        - Stetig am Rand visualisierte Weights anzeigen. Interessant, wenn beispielsweise kein Vortraining,
-          da User beobachten können, wie die Weights entstehen.
-    - Slider für Trainingssample Anzahl (z.B. 0 für kein Vortraining), dann ok Button klicken
-        - Wenn über bestimmtem Wert (= Dauer zu lange) vorgerechneten Datensatz einlesen, den wir mitliefern
-    - Optional:
-        - Realistischere Malfunktion schreiben
-        - Druckstärke beim Malen beachten
-        - Gemalte Zahlen vorm predicten zentrieren/croppen?
-        - Extra: Buchstaben zeichnen; Programm mitteilen, welcher Buchstabe gemeint war; Weights sehen und
-          so eigenes Buchstaben-Modell erstellen.
-*/

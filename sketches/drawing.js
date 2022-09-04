@@ -50,7 +50,6 @@ const drawing = (sketch) => {
 
     sketch.resetSelect = function (){
         document.getElementById("select").selectedIndex = 0;
-        console.log('reset index');
     }
 
     sketch.mousePressed = function () {
