@@ -76,11 +76,12 @@ body {
 .headline{
     font-size: 3rem;
     font-weight: lighter;
+    margin-bottom: 3rem;
 }
 
 .text{
-    max-width: 30vw;
-}
+    max-width: 50rem;
+    
 
 .predicted-container{
     display: flex;
@@ -88,7 +89,7 @@ body {
     align-items: center;
     width: 280px;
     height: 280px;
-    background-color: #f0f0f0;
+    background-color: white;
     border-radius: .5rem;
 }
 
@@ -99,4 +100,23 @@ body {
 .box-container{
     display: flex;
     gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.loading{
+    color: #fff;
+    font-size: 2rem;
+    font-weight: lighter;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.container-desc{
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
 }

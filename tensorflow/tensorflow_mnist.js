@@ -3,7 +3,8 @@ let trainingImage, trainingLabel;
 let model;
 let single_layer;
 let mnist_data;
-let nTrain = 1000;
+let nTrain = 5000;
+let num_test_samples = 1000;
 
 const tensorflowModel = (sketch) => {
     sketch.setup = function () {
@@ -14,6 +15,7 @@ const tensorflowModel = (sketch) => {
             }));
         } else {
             console.log(`Training new model`);
+            document.getElementById("loading").innerHTML = "Training new model - Please wait till its finished";
             sketch._createModel();
         }
     }
@@ -26,7 +28,7 @@ const tensorflowModel = (sketch) => {
         model.compile({optimizer: tf.train.sgd(5.1), loss: 'meanSquaredError'});
 
         mnist_data = new MnistData();
-        mnist_data.load(nTrain, 10).then(sketch._training);
+        mnist_data.load(nTrain, num_test_samples).then(sketch._training);
     }
 
     sketch._training = function () {
@@ -40,11 +42,17 @@ const tensorflowModel = (sketch) => {
     }
 
     sketch._testing = function () {
-        let num_test_samples = 10;
-        [xtest, ytest] = mnist_data.getTestData(num_test_samples);
-        xtest = xtest.reshape([num_test_samples, 784]);
-        ypredict = model.predict(xtest);
-        console.log("Testing finished.");                          //TODO: how to print accuracy?
+        let xTest, yTest;
+        [xTest, yTest] = mnist_data.getTestData(num_test_samples);
+        xTest = xTest.reshape([num_test_samples, 784]);
+        let yPredict = model.predict(xTest);
+        console.log("Testing finished.");
+
+        //find arg max in predicted labels and in groundtruth labels and substratc those
+        let r = yPredict.transpose().argMax().sub(yTest.transpose().argMax());
+        r = r.abs();
+        //find all zero values <= prediction was correct and divide by total number of samples
+        document.getElementById("loading").innerHTML = "Training and testing finished! Your accuracy is above: " + (r.equal(0).sum().div(num_test_samples)).toString().substr(13, 2) + "." + (r.equal(0).sum().div(num_test_samples)).toString().substr(15, 1) + "%" ;
     }
 
     sketch._setTrainingImage = function (drawing) {
@@ -76,12 +84,6 @@ const tensorflowModel = (sketch) => {
         [x, y] = sketch._extractTensorsFromDrawing(drawing, number);
         x = x.reshape([1, 784]);
         model.fit(x, y, {batchSize: 1, epochs: 5});
-        sketch.resetSelect();
-    }
-
-    sketch.resetSelect = function (){
-        document.getElementById("select").selectedIndex = 0;
-        console.log('reset index');
     }
 
     sketch.predictNumberFromCurrentDrawing = function (drawing) {
@@ -92,7 +94,7 @@ const tensorflowModel = (sketch) => {
         ypredict.print(true);
         let predictedNumber = ypredict.argMax(1).dataSync()[0];
         document.getElementById("predicted-number").innerHTML = predictedNumber.toString();
-        weightSketch.drawWeightOfNumber(predictedNumber);
+        number = predictedNumber;
     }
 
     sketch._loadPreviousTrainingData = async function () {
@@ -103,23 +105,8 @@ const tensorflowModel = (sketch) => {
     sketch.saveCurrentTrainingData = async function () {
         const saveResults = await model.save('localstorage://my-model');
         console.log("Current model saved locally.")
+        //document.getElementById("loading").innerHTML = "Training done!";
     }
 }
 
 let tensorflow_mnistSketch = new p5(tensorflowModel, 'model');
-
-
-/*
-//TODO:
-    - Weights visualisieren
-        - Stetig am Rand visualisierte Weights anzeigen. Interessant, wenn beispielsweise kein Vortraining,
-          da User beobachten können, wie die Weights entstehen.
-    - Slider für Trainingssample Anzahl (z.B. 0 für kein Vortraining), dann ok Button klicken
-        - Wenn über bestimmtem Wert (= Dauer zu lange) vorgerechneten Datensatz einlesen, den wir mitliefern
-    - Optional:
-        - Realistischere Malfunktion schreiben
-        - Druckstärke beim Malen beachten
-        - Gemalte Zahlen vorm predicten zentrieren/croppen?
-        - Extra: Buchstaben zeichnen; Programm mitteilen, welcher Buchstabe gemeint war; Weights sehen und
-          so eigenes Buchstaben-Modell erstellen.
-*/
