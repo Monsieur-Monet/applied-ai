@@ -81,7 +81,7 @@ body {
 
 .text{
     max-width: 50rem;
-    
+}
 
 .predicted-container{
     display: flex;
