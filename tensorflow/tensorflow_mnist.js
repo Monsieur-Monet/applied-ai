@@ -42,17 +42,16 @@ const tensorflowModel = (sketch) => {
     }
 
     sketch._testing = function () {
-        let xtest, ytest;
-        [xtest, ytest] = mnist_data.getTestData(num_test_samples);
-        xtest = xtest.reshape([num_test_samples, 784]);
-        let yPredict = model.predict(xtest);
-        console.log("Testing finished. Accuracy was: ");
+        let xTest, yTest;
+        [xTest, yTest] = mnist_data.getTestData(num_test_samples);
+        xTest = xTest.reshape([num_test_samples, 784]);
+        let yPredict = model.predict(xTest);
+        console.log("Testing finished.");
 
         //find arg max in predicted labels and in groundtruth labels and substratc those
-        r = yPredict.transpose().argMax().sub(ytest.transpose().argMax());
+        let r = yPredict.transpose().argMax().sub(yTest.transpose().argMax());
         r = r.abs();
         //find all zero values <= prediction was correct and divide by total number of samples
-
         document.getElementById("loading").innerHTML = "Training and testing finished! Your accuracy is above: " + (r.equal(0).sum().div(num_test_samples)).toString().substr(13, 2) + "." + (r.equal(0).sum().div(num_test_samples)).toString().substr(15, 1) + "%" ;
     }
 
