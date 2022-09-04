@@ -3,7 +3,7 @@ let trainingImage, trainingLabel;
 let model;
 let single_layer;
 let mnist_data;
-let nTrain = 1000;
+let nTrain = 5000;
 let num_test_samples = 1000;
 
 const tensorflowModel = (sketch) => {
@@ -53,7 +53,7 @@ const tensorflowModel = (sketch) => {
         r = r.abs();
         //find all zero values <= prediction was correct and divide by total number of samples
 
-        document.getElementById("loading").innerHTML = (r.equal(0).sum().div(num_test_samples)).toString();
+        document.getElementById("loading").innerHTML = "Training and testing finished! Your accuracy is above: " + (r.equal(0).sum().div(num_test_samples)).toString().substr(13, 2) + "." + (r.equal(0).sum().div(num_test_samples)).toString().substr(15, 1) + "%" ;
     }
 
     sketch._setTrainingImage = function (drawing) {

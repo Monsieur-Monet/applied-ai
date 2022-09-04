@@ -55,12 +55,21 @@
       </select>
     </div>
     <div class="box-container">
-    <div class="canvas-container" id="drawing_sketch"></div>
-    <div class="predicted-container"> <span class="predicted-number" id="predicted-number"></span></div>
-    <div class="canvas-container"  id="predictionWeight_sketch"></div>
+      <div class="flex">
+        <div class="canvas-container" id="drawing_sketch"></div>
+        <div class="container-desc">Draw here</div>
+      </div>
+      <div class="flex">
+      <div class="predicted-container"> <span class="predicted-number" id="predicted-number"></span></div>
+      <div class="container-desc">Prediction</div>
+      </div>
+      <div class="flex">
+      <div class="canvas-container" id="predictionWeight_sketch"></div>
+      <div class="container-desc">Prediction weights</div>
+      </div>
     </div>
     <div class="box-container">
-      <div class="canvas-container"  id="weights_sketch"></div>
+      <div class="canvas-container" id="weights_sketch"></div>
     </div>
     <div class="loading" id="loading"></div>
   </div>

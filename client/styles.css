@@ -76,10 +76,11 @@ body {
 .headline{
     font-size: 3rem;
     font-weight: lighter;
+    margin-bottom: 3rem;
 }
 
 .text{
-    max-width: 30vw;
+    max-width: 50rem;
     
 }
 
@@ -107,4 +108,16 @@ body {
     color: #fff;
     font-size: 2rem;
     font-weight: lighter;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.container-desc{
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
 }
