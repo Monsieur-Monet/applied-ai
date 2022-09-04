@@ -1,3 +1,3 @@
-# Hangman game
+# applied-ai
 
-The Website can be reached by clicking [here](https://monsieur-monet.github.io/applied-ai).
+https://monsieur-monet.github.io/applied-ai/
